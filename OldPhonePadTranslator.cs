@@ -28,10 +28,24 @@ namespace IronCodingChallenge
             StringBuilder result = new StringBuilder();
             int count = 1;
             char lastKey = '\0';
+            DateTime lastPressTime = DateTime.MinValue;
 
             foreach (char ch in input)
             {
-                if (ch == ' ')//not working
+                DateTime currentPressTime = DateTime.Now;
+
+                if (lastPressTime != DateTime.MinValue && (currentPressTime - lastPressTime).TotalSeconds > 1.9)//would be the actual code for pressing the button
+                {
+                    if (lastKey != '\0')
+                    {
+                        result.Append(keypad[lastKey][count - 1]);
+                    }
+                    // Reset the count and the last key if there's a space
+                    lastKey = '\0';
+                    count = 1;
+                    continue;
+                }
+                if (ch == ' ')//Space to test
                 {
                     if (lastKey != '\0')
                     {
