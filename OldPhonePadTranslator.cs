@@ -32,6 +32,7 @@ namespace IronCodingChallenge
 
             foreach (char ch in input)
             {
+
                 DateTime currentPressTime = DateTime.Now;
 
                 if (lastPressTime != DateTime.MinValue && (currentPressTime - lastPressTime).TotalSeconds > 1.9)//would be the actual code for pressing the button
@@ -56,7 +57,17 @@ namespace IronCodingChallenge
                     count = 1;
                     continue;//Continue to next key
                 }
-
+                else if (ch == '0')
+                {
+                    if (lastKey != '\0')
+                    {
+                        result.Append(keypad[lastKey][count - 1]);
+                    }
+                    result.Append(" ");
+                    lastKey = '\0';
+                    count = 1;
+                    continue;
+                }
                 else if (ch == '#')
                 {
                     if (lastKey != '\0')
@@ -66,6 +77,7 @@ namespace IronCodingChallenge
                     // Send button, finish input
                     break;
                 }
+                
 
                 else if (ch == '*')
                 {
