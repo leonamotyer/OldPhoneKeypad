@@ -10,7 +10,7 @@ namespace TestOldPhone
         {
 
         }
-        
+        [Test]
         public void Test1()
         {
             string expected = "TURING";
@@ -24,7 +24,6 @@ namespace TestOldPhone
             string actual = OldPhonePadTranslator.OldPhonePad("55533666 662#");
             Assert.AreEqual(expected, actual);
         }
-        [Test]
         [Test]
         public void Test3()
         {
@@ -63,5 +62,5 @@ namespace TestOldPhone
 
 
 
-    } 
+    }
 }
